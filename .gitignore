@@ -1,0 +1,5 @@
+# ignore Emacs auto-save and temp files 
+*~
+\#*\#
+.\#*
+/emacs/.emacs.d/auto-save-list/
