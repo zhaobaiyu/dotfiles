@@ -87,3 +87,4 @@ source $ZSH/oh-my-zsh.sh
 alias ssstart="sudo sslocal -c /etc/shadowsocks.json -d start"
 alias ssstop="sudo sslocal -c /etc/shadowsocks.json -d stop"
 alias patg++="g++ -o bin/a -Wall -std=c++11"
+alias sshdo="ssh do.baiyu.me"
