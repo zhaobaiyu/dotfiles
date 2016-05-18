@@ -1,5 +1,6 @@
 (setq read-file-name-completion-ignore-case 'non-nil)
-(setq initial-frame-alist '((top . 0) (left . 0)   (width . 147) (height . 34)))
+ ;; (setq initial-frame-alist '((top . 0) (left . 0)   (width . 147) (height . 34)))
+(custom-set-variables '(initial-frame-alist (quote ((fullscreen . maximized)))))
 (setq default-frame-alist '((top . 0) (right . 0)   (width .80) (height . 34))) 
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 (add-to-list 'custom-theme-load-path (expand-file-name "themes" user-emacs-directory))
