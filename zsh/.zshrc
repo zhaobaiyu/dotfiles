@@ -74,6 +74,12 @@ source $ZSH/oh-my-zsh.sh
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
+# when emacs using shell
+if [ -n "$INSIDE_EMACS" ]; then
+    export EDITOR=emacsclient
+    unset zle_bracketed_paste  # This line
+fi
+
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -88,3 +94,4 @@ alias ssstart="sudo sslocal -c /etc/shadowsocks.json -d start"
 alias ssstop="sudo sslocal -c /etc/shadowsocks.json -d stop"
 alias patg++="g++ -o bin/a -Wall -std=c++11"
 alias sshdo="ssh do.baiyu.me"
+alias arduino="~/Applications/arduino-1.6.9/arduino --board arduino:avr:uno --port /dev/ttyACM0"
