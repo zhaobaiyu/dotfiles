@@ -29,3 +29,7 @@
  ;; Arduino-mode
 (setq auto-mode-alist (cons '("\\.\\(pde\\|ino\\)$" . arduino-mode) auto-mode-alist))
 (autoload 'arduino-mode "arduino-mode" "Arduino editing mode." t)
+
+ ;; company-mode
+(autoload 'company-mode "company" nil t)
+(add-hook 'after-init-hook 'global-company-mode)
