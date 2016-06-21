@@ -53,7 +53,10 @@ plugins=(git)
 
 # User configuration
 
-  export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games"
+PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games"
+export PATH=$PATH:$HOME/Applications/algs4/bin:$HOME/Applications/arduino
+
+export CLASSPATH=$CLASSPATH:$HOME/Applications/algs4/algs4.jar
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
