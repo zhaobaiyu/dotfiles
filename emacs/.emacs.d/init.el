@@ -13,6 +13,7 @@
  '(company-idle-delay 0)
  '(company-minimum-prefix-length 2)
  '(custom-enabled-themes (quote (manoj-dark)))
+ '(inhibit-startup-screen t)
  '(initial-frame-alist (quote ((fullscreen . maximized)))))
 (setq default-frame-alist '((top . 0) (right . 0)   (width .80) (height . 34)))
 
