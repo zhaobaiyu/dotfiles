@@ -1,5 +1,6 @@
 (setq read-file-name-completion-ignore-case 'non-nil)
- ;; (setq initial-frame-alist '((top . 0) (left . 0)   (width . 147) (height . 34)))
+;; (setq initial-frame-alist '((top . 0) (left . 0)   (width . 147) (height . 34)))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -49,3 +50,13 @@
  ;; company-c-headers
 (with-eval-after-load 'company
   (add-to-list 'company-backends 'company-c-headers))
+
+ ;; smex
+(smex-initialize)
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+ ;; This is your old M-x.
+(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
+
+ ;; magit
+(global-set-key (kbd "C-x g") 'magit-status)

@@ -5,4 +5,5 @@
 /emacs/.emacs.d/auto-save-list/
 /emacs/.emacs.d/tutorial/
 /emacs/.emacs.d/elpa
+/emacs/.emacs.d/smex-items
 session*
