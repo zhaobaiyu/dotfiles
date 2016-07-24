@@ -12,13 +12,17 @@
  '(company-clang-arguments (quote ("-std=c++11")))
  '(company-idle-delay 0)
  '(company-minimum-prefix-length 2)
- '(custom-enabled-themes (quote (manoj-dark)))
+ '(custom-enabled-themes (quote (solarized)))
+ '(frame-background-mode (quote dark))
  '(inhibit-startup-screen t)
  '(initial-frame-alist (quote ((fullscreen . maximized)))))
 (setq default-frame-alist '((top . 0) (right . 0)   (width .80) (height . 34)))
 
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
-(add-to-list 'custom-theme-load-path (expand-file-name "themes" user-emacs-directory))
+
+ ;; solarized theme
+(add-to-list 'custom-theme-load-path (expand-file-name "themes/emacs-color-theme-solarized" user-emacs-directory))
+(load-theme 'solarized t)
 
 (require 'google-c-style)
 (add-hook 'c-mode-common-hook 'google-set-c-style)
