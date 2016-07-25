@@ -1,3 +1,5 @@
+ ;; melpa install company, magit, smex, company-c-headers
+
 (setq read-file-name-completion-ignore-case 'non-nil)
 ;; (setq initial-frame-alist '((top . 0) (left . 0)   (width . 147) (height . 34)))
 
