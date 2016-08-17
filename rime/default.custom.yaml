@@ -9,3 +9,9 @@ patch:
     - schema: luna_pinyin
     - schema: luna_pinyin_tw    
     - schema: luna_pinyin_fluency
+  ascii_composer/switch_key:
+    Caps_Lock: noop
+    Shift_L: commit_code
+    Shift_R: commit_code
+    Control_L: noop
+    Control_R: noop

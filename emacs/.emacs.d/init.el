@@ -1,6 +1,8 @@
  ;; melpa install company, magit, smex, company-c-headers
+ ;; melpa-stable install markdown-mode 
 
 (setq read-file-name-completion-ignore-case 'non-nil)
+(setq comint-process-echoes t)
 ;; (setq initial-frame-alist '((top . 0) (left . 0)   (width . 147) (height . 34)))
 
 (custom-set-variables
@@ -49,9 +51,12 @@
 (autoload 'company-mode "company" nil t)
 (add-hook 'after-init-hook 'global-company-mode)
 
- ;; melpa
+ ;; melpa and melpa-stable
 (require 'package)
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+(add-to-list 'package-archives
+	     '("melpa" . "http://melpa.org/packages/"))
+(add-to-list 'package-archives
+	     '("melpa-stable" . "https://stable.melpa.org/packages/"))
 (package-initialize) 
 
  ;; company-c-headers
