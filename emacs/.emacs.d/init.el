@@ -1,6 +1,11 @@
  ;; melpa install company, magit, smex, company-c-headers
  ;; melpa-stable install markdown-mode 
 
+;; (menu-bar-mode -1)
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
+(display-battery-mode 1)
+(display-time-mode 1)
 (setq read-file-name-completion-ignore-case 'non-nil)
 (setq comint-process-echoes t)
 ;; (setq initial-frame-alist '((top . 0) (left . 0)   (width . 147) (height . 34)))
@@ -17,10 +22,12 @@
  '(company-idle-delay 0)
  '(company-minimum-prefix-length 2)
  '(custom-enabled-themes (quote (solarized)))
+ '(display-time-24hr-format t)
+ '(display-time-day-and-date t)
  '(frame-background-mode (quote dark))
  '(inhibit-startup-screen t)
  '(initial-frame-alist (quote ((fullscreen . maximized)))))
-(setq default-frame-alist '((top . 0) (right . 0)   (width .80) (height . 34)))
+(setq default-frame-alist '((top . 0) (right . 0)   (width . 80) (height . 34)))
 
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
