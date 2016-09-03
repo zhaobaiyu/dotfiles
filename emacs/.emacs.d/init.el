@@ -40,7 +40,9 @@
 (add-hook 'c-mode-common-hook 'google-make-newline-indent)
 
  ;; linum
-(add-hook 'find-file-hook (lambda () (linum-mode 1)))
+ ;; (add-hook 'find-file-hook (lambda () (linum-mode 1)))
+(add-hook 'text-mode-hook 'linum-mode)
+(add-hook 'prog-mode-hook 'linum-mode)
 
 
 (custom-set-faces
