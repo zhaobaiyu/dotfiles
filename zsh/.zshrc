@@ -99,3 +99,8 @@ alias patg++="g++ -o bin/a -Wall -std=c++11"
 alias sshdo="ssh do.baiyu.me"
 alias qcloud="ssh qcloud.baiyu.me"
 alias arduino="~/Applications/arduino-1.6.9/arduino --board arduino:avr:uno --port /dev/ttyACM0"
+
+# virtualenvwrapper
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/Projects
+source /usr/local/bin/virtualenvwrapper.sh
