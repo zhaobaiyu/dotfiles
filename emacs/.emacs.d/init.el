@@ -17,7 +17,7 @@
  ;; If there is more than one, they won't work right.
  '(company-c-headers-path-system
    (quote
-    ("/usr/include/c++/5/" "/usr/include/" "/usr/local/include/")))
+    ("/usr/include/c++/6/" "/usr/include/" "/usr/local/include/")))
  '(company-clang-arguments (quote ("-std=c++11")))
  '(company-idle-delay 0)
  '(company-minimum-prefix-length 2)
