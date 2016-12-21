@@ -26,7 +26,9 @@
  '(display-time-day-and-date t)
  '(frame-background-mode (quote dark))
  '(inhibit-startup-screen t)
- '(initial-frame-alist (quote ((fullscreen . maximized)))))
+ '(initial-frame-alist (quote ((fullscreen . maximized))))
+ '(python-indent-guess-indent-offset nil)
+ '(python-indent-offset 4))
 (setq default-frame-alist '((top . 0) (right . 0)   (width . 80) (height . 34)))
 
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
@@ -64,8 +66,8 @@
 (require 'package)
 (add-to-list 'package-archives
 	     '("melpa" . "http://melpa.org/packages/"))
-(add-to-list 'package-archives
-	     '("melpa-stable" . "https://stable.melpa.org/packages/"))
+ ;; (add-to-list 'package-archives
+ ;; 	     '("melpa-stable" . "http://stable.melpa.org/packages/"))
 (package-initialize) 
 
  ;; company-c-headers

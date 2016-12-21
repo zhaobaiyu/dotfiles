@@ -54,9 +54,10 @@ plugins=(git)
 # User configuration
 
 PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games"
-export PATH=$HOME/Applications/anaconda3/bin:$PATH:$HOME/Applications/algs4/bin:$HOME/Applications/arduino
+OPT_PATH="/opt/baiyu"
+export PATH=$OPT_PATH/algs4/bin:$OPT_PATH/arduino:$PATH
 
-export CLASSPATH=$CLASSPATH:$HOME/Applications/algs4/algs4.jar
+export CLASSPATH=$CLASSPATH:$OPT_PATH/algs4/algs4.jar
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -96,12 +97,14 @@ fi
 alias ssstart="sudo sslocal -c /etc/shadowsocks.json -d start"
 alias ssstop="sudo sslocal -c /etc/shadowsocks.json -d stop"
 alias patg++="g++ -o bin/a -Wall -std=c++11"
-alias sshdo="ssh do.baiyu.me"
-alias qcloud="ssh qcloud.baiyu.me"
-alias arduino="~/Applications/arduino-1.6.9/arduino --board arduino:avr:uno --port /dev/ttyACM0"
+alias arduino="$OPT_PATH/arduino/arduino --board arduino:avr:uno --port /dev/ttyACM0"
 alias tmux="tmux -2"
+alias conda="$OPT_PATH/anaconda3/bin/conda"
+alias conda+="source $OPT_PATH/anaconda3/bin/activate"
+alias conda-="source $OPT_PATH/anaconda3/bin/deactivate"
 
 # GNU LS color 
 eval `dircolors ~/.dir_colors/dircolors.ansi-dark`
 fortune | cowsay | lolcat && echo
 # alias cowsay="echo -e 'Talk is cheap. Show me the code. \n -- Linus Torvalds' | cowsay | lolcat && echo "
+
