@@ -54,7 +54,8 @@ plugins=(git)
 # User configuration
 
 PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games"
-export PATH=$HOME/Applications/anaconda3/bin:$PATH:$HOME/Applications/algs4/bin:$HOME/Applications/arduino
+OPT_PATH="/opt/baiyu"
+# export PATH=$HOME/Applications/anaconda3/bin:$PATH:$HOME/Applications/algs4/bin:$HOME/Applications/arduino
 
 export CLASSPATH=$CLASSPATH:$HOME/Applications/algs4/algs4.jar
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -100,3 +101,9 @@ alias sshdo="ssh do.baiyu.me"
 alias qcloud="ssh qcloud.baiyu.me"
 alias arduino="~/Applications/arduino-1.6.9/arduino --board arduino:avr:uno --port /dev/ttyACM0"
 alias jekyll_build="cd ~/Projects/blog/ && sudo jekyll build --destination ~/www/blog && cd -"
+alias conda="$OPT_PATH/anaconda3/bin/conda"
+alias conda+="source $OPT_PATH/anaconda3/bin/activate"
+alias conda-="source $OPT_PATH/anaconda3/bin/deactivate"
+alias conda2="$OPT_PATH/anaconda2/bin/conda"
+alias conda2+="source $OPT_PATH/anaconda2/bin/activate"
+alias conda2-="source $OPT_PATH/anaconda2/bin/deactivate"
