@@ -1,7 +1,7 @@
  ;; melpa install company, magit, smex, company-c-headers
  ;; melpa-stable install markdown-mode 
 
-;; (menu-bar-mode -1)
+(menu-bar-mode -1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 (display-battery-mode 1)
@@ -83,3 +83,4 @@
 
  ;; magit
 (global-set-key (kbd "C-x g") 'magit-status)
+

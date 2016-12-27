@@ -102,6 +102,7 @@ alias tmux="tmux -2"
 alias conda="$OPT_PATH/anaconda3/bin/conda"
 alias conda+="source $OPT_PATH/anaconda3/bin/activate"
 alias conda-="source $OPT_PATH/anaconda3/bin/deactivate"
+alias kcptun="ssstart && $OPT_PATH/kcptun/start.sh"
 
 # GNU LS color 
 eval `dircolors ~/.dir_colors/dircolors.ansi-dark`
