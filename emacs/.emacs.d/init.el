@@ -41,11 +41,20 @@
 (add-hook 'c-mode-common-hook 'google-set-c-style)
 (add-hook 'c-mode-common-hook 'google-make-newline-indent)
 
+ ;; set java indent width
+(add-hook 'java-mode-hook (lambda ()
+			    (setq c-basic-offset 4
+				  tab-width 4
+				  indent-tabs-mode nil)))
+
  ;; linum
  ;; (add-hook 'find-file-hook (lambda () (linum-mode 1)))
 (add-hook 'text-mode-hook 'linum-mode)
 (add-hook 'prog-mode-hook 'linum-mode)
 
+ ;; auto pair
+(electric-pair-mode t)
+(show-paren-mode t)
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
