@@ -1,2 +1,0 @@
-# remap Trackpoint button 6/7 to 106/107, avoid the conflict
-xinput set-button-map "TPPS/2 IBM TrackPoint" 1 2 3 4 5 106 107
