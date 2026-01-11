@@ -1,21 +1,21 @@
 #!/bin/bash
+set -eufo pipefail
+
+echo "🐧 Detected Debian-like OS. Starting apt install..."
 
 # Define installation paths
 OMZ_DIR="$HOME/.oh-my-zsh"
 ZSH_CUSTOM="$OMZ_DIR/custom"
 
 # 0. Pre-flight: Ensure zsh, git, and curl are installed
-# This is crucial for new Ubuntu/Debian instances or Macs without these tools.
+# This is crucial for new Ubuntu/Debian instances without these tools.
 if ! command -v zsh >/dev/null 2>&1; then
   echo "🚀 Zsh not found. Installing dependencies..."
   if [ -x "$(command -v apt-get)" ]; then
-    # Debian/Ubuntu
-    sudo apt-get update && sudo apt-get install -y zsh git curl
-  elif [ -x "$(command -v brew)" ]; then
-    # macOS
-    brew install zsh git curl
+    # Debian-like
+    sudo apt-get update && sudo DEBIAN_FRONTEND=noninteractive apt-get install -y zsh git curl
   else
-    echo "❌ Package manager not found (apt/brew). Please install zsh manually."
+    echo "❌ Package manager not found (apt-get). Please install zsh manually."
     exit 1
   fi
 fi

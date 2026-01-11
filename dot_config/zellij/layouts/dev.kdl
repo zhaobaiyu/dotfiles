@@ -1,0 +1,22 @@
+layout {
+    tab name="Coding" focus=true {
+        pane split_direction="vertical" {
+            pane size="60%" name="Neovim"
+            pane split_direction="horizontal" {
+                pane name="Server"
+                pane name="Logs"
+            }
+        }
+    }
+
+    tab name="Git" {
+        pane command="lazygit"
+    }
+    
+    default_tab_template {
+        children
+        pane size=1 borderless=true {
+            plugin location="zellij:compact-bar"
+        }
+    }
+}

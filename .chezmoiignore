@@ -1,0 +1,16 @@
+# If not mac, ignore mac script
+{{ if ne .chezmoi.os "darwin" }}
+run_onchange_before_install_mac.sh
+run_onchange_after_configure_mac.sh.tmpl
+{{ end }}
+
+# If not debian or ubuntu, ignore debian script
+{{ if ne .chezmoi.os "linux" }}
+run_onchange_before_install_debian.sh
+{{ else if not (or (eq .chezmoi.osRelease.id "debian") (eq .chezmoi.osRelease.id "ubuntu") (contains "debian" (.chezmoi.osRelease.idLike | default "")) (contains "ubuntu" (.chezmoi.osRelease.idLike | default ""))) }}
+run_onchange_before_install_debian.sh
+{{ end }}
+
+.config/fish/fish_variables
+.config/fish/fish_history
+.config/fish/generated_completions/

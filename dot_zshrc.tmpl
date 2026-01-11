@@ -91,7 +91,7 @@ export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='emacs'
+  export EDITOR='vim'
 else
   export EDITOR='code'
 fi
@@ -110,10 +110,14 @@ fi
 alias c="claude"
 
 # Added by Global Python
+{{- if stat (joinPath .chezmoi.homeDir ".global-python/bin") }}
 export PATH="$HOME/.global-python/bin:$PATH"
+{{- end }}
 
 # Added by Antigravity
-export PATH="/Users/baiyu/.antigravity/antigravity/bin:$PATH"
+{{- if stat (joinPath .chezmoi.homeDir ".antigravity/antigravity/bin") }}
+export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
+{{- end }}
 
 {{- if eq .machine_type "work" }}
 # For Amazon machines

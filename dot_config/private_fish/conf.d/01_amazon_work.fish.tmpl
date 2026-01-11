@@ -1,0 +1,23 @@
+{{- if eq .machine_type "work" }}
+# For Amazon machines
+
+# Alias
+abbr -a bb 'brazil-build'
+abbr -a k 'kiro-cli chat --trust-all-tools --model claude-opus-4.5'
+
+fish-add-path $HOME/.toolbox/bin
+fish-add-path /usr/local/sbin
+fish-add-path /usr/local/opt/ruby/bin
+
+# node 22
+fish-add-path /opt/homebrew/opt/node@22/bin
+
+# Set home brew curl
+fish-add-path /opt/homebrew/opt/curl/bin
+
+# JAVA
+set -x JAVA_HOME /Library/Java/JavaVirtualMachines/amazon-corretto-17.jdk/Contents/Home
+
+# card
+fish-add-path $HOME/.cardcli_profile
+{{- end }}

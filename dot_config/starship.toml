@@ -1,0 +1,33 @@
+add_newline = false
+
+[character]
+success_symbol = "[➜](bold green)"
+error_symbol = "[✗](bold red)"
+
+[directory]
+truncation_length = 3
+truncate_to_repo = false
+
+[git_branch]
+symbol = " "
+style = "bold purple"
+
+[git_status]
+style = "red"
+
+[package]
+disabled = true
+
+[cmd_duration]
+min_time = 2000
+show_milliseconds = false
+
+[hostname]
+ssh_only = true
+format = "[$hostname](bold red) "
+
+[username]
+show_always = false
+
+[aws]
+disabled = true
