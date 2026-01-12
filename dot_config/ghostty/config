@@ -66,3 +66,4 @@ window-padding-y = 20
 
 # --- Integration ---
 shell-integration = fish
+macos-option-as-alt = true

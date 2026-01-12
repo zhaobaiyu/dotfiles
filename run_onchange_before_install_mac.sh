@@ -1,6 +1,9 @@
 #!/bin/bash
 set -eufo pipefail
 
+# Exit if not macOS (matching .chezmoiignore logic)
+[[ "$(uname)" != "Darwin" ]] && exit 0
+
 echo "🍎 Detected macOS. Starting setup..."
 
 if ! command -v brew &> /dev/null; then
@@ -50,10 +53,10 @@ else
   echo "✅ Fish is already the default shell."
 fi
 
-echo "Configure global python..."
+echo "🐍 Configuring global python..."
 GLOBAL_PYTHON_DIR="$HOME/.global-python"
 if [ ! -d "$GLOBAL_PYTHON_DIR" ]; then
-  echo "🚀 Global python not found. Installing..."
+  echo "Global python not found. Installing..."
   uv python install 3.12
   uv venv ~/.global-python --python 3.12
   uv pip install pip pandas

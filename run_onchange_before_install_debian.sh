@@ -1,6 +1,11 @@
 #!/bin/bash
 set -eufo pipefail
 
+# Exit if not Debian-like Linux (matching .chezmoiignore logic)
+[[ "$(uname)" != "Linux" ]] && exit 0
+[ -f /etc/os-release ] && . /etc/os-release || exit 0
+[[ "$ID" =~ ^(debian|ubuntu)$ || "${ID_LIKE:-}" =~ debian|ubuntu ]] || exit 0
+
 echo "🐧 Detected Debian-like OS. Starting apt install..."
 
 # Define installation paths
