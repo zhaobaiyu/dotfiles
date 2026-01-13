@@ -35,6 +35,7 @@ abbr -a glg 'git log --oneline --graph --decorate'
 # -----------------------------
 abbr -a cm 'chezmoi'
 abbr -a cmcd 'chezmoi cd'
+abbr -a cmdiff 'chezmoi diff'
 abbr -a cma 'chezmoi apply'
 abbr -a cme 'chezmoi edit'
 abbr -a cmu 'chezmoi update'
