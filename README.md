@@ -79,8 +79,16 @@ The setup features a modern development environment with GPU-accelerated termina
 ### First-time setup on a new machine
 
 1. Install chezmoi:
+
+   For Debian/Ubuntu:
    ```bash
-   sh -c "$(curl -fsLS get.chezmoi.io)"
+   # install under ./.local/bin
+   sh -c "$(curl -fsLS get.chezmoi.io/lb)"
+   ```
+
+   For Mac OS:
+   ```bash
+   brew install chezmoi
    ```
 
 2. Set up the age encryption key:
@@ -103,7 +111,7 @@ The setup features a modern development environment with GPU-accelerated termina
 
 4. During initialization, you'll be prompted to select your machine type:
    - `server`: For server environments (uses Zsh)
-   - `personal`: For personal machines (uses Fish on macOS, Zsh on Linux)
+   - `personal`: For personal machines (uses Fish on macOS)
    - `work`: For work machines with company-specific configurations
 
 5. Review the changes that will be applied:

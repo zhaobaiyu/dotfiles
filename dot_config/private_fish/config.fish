@@ -1,11 +1,13 @@
 # Disable device detection BEFORE interactive check to prevent DA query timeout
-set -g fish_features no-device-detection
+# set -g fish_features no-device-detection
 
 if status is-interactive
     set -g fish_greeting
-    set -g fish_term24bit 1
+    # set -g fish_term24bit 1
 
-    eval (/opt/homebrew/bin/brew shellenv)
+    if type -q brew
+        eval (brew shellenv)
+    end
 
     # Initialize tools
     starship init fish | source
@@ -13,7 +15,7 @@ if status is-interactive
     direnv hook fish | source
 
     # Theme
-    fish_config theme choose --color-theme=dark "Catppuccin Mocha"
+    fish_config theme choose "Catppuccin Mocha" --color-theme=dark 
 
     # alias vim="nvim"
     # fish_vi_key_bindings

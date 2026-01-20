@@ -197,8 +197,7 @@ else
     uv python install 3.12
     uv venv ~/.global-python --python 3.12
     # Install packages into the virtual environment
-    "$GLOBAL_PYTHON_DIR/bin/pip" install pandas || \
-      uv pip install --python "$GLOBAL_PYTHON_DIR/bin/python" pip pandas
+    uv pip install pip pandas
   else
     echo "✅ Global python is already installed."
   fi
