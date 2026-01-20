@@ -23,7 +23,7 @@ The setup features a modern development environment with GPU-accelerated termina
 ### Terminal & Shell
 - **Terminal**: [Ghostty](https://ghostty.org/) - Modern GPU-accelerated terminal emulator
 - **Shell (macOS)**: [Fish](https://fishshell.com/) - Friendly interactive shell with modern features
-- **Shell (Linux)**: [Zsh](https://www.zsh.org/) with [Oh My Zsh](https://ohmyz.sh/) framework
+- **Shell (Linux)**: Both [Zsh](https://www.zsh.org/) with [Oh My Zsh](https://ohmyz.sh/) and [Fish](https://fishshell.com/) (Fish is default)
 - **Multiplexer**: [Zellij](https://zellij.dev/) - Terminal workspace with layouts
 - **Prompt**: [Starship](https://starship.rs/) - Fast, customizable cross-shell prompt
 
@@ -46,13 +46,16 @@ The setup features a modern development environment with GPU-accelerated termina
 
 ### Development Tools
 - **AI Assistant**: [Claude Code](https://claude.ai/code) - AI-powered development environment with AWS Bedrock backend
+- **Python Manager**: [uv](https://github.com/astral-sh/uv) - Fast Python package and project manager
 - **Font**: JetBrains Mono Nerd Font - Patched font with programming ligatures and icons
 
 ## Managed Configurations
 
 ### Shell Configuration
-- **Zsh** (Linux/Server): Oh My Zsh with custom theme and plugins
-- **Fish** (macOS): Modern shell with abbreviations, custom theme, and plugins
+- **Zsh** (Linux/Server): Oh My Zsh with custom theme and plugins (autosuggestions, syntax highlighting)
+- **Fish** (macOS/Linux): Modern shell with abbreviations, custom theme, and plugins (Fisher-managed)
+  - Linux systems have both Zsh and Fish installed, with Fish set as default
+  - Easily switch shells with `chsh -s $(which zsh)` or `chsh -s $(which fish)`
 
 ### Terminal & Multiplexer
 - **Ghostty**: GPU-accelerated terminal with Catppuccin theme
@@ -124,11 +127,20 @@ The setup script will automatically:
 
 #### Linux (Debian/Ubuntu)
 The setup script will automatically:
-- Install Zsh, Git, and Curl
-- Install Oh My Zsh
-- Install Zsh plugins (autosuggestions, syntax highlighting)
+- Install basic dependencies (curl, wget, git, build-essential, zsh)
+- Install all modern CLI tools (fish, fzf, bat, fd, ripgrep, eza, zoxide, starship, zellij, lazygit, direnv, uv)
+- Install JetBrains Mono Nerd Font
+- Install Oh My Zsh with plugins (autosuggestions, syntax highlighting)
+- Install Fish shell
+- Configure Fisher and Fish plugins (after first run)
+- Set Fish as the default shell
+- Set up global Python 3.12 environment with pandas
 
-Note: On Linux, you'll need to manually install modern CLI tools (eza, bat, fd, etc.) or use alternative package managers like [Homebrew for Linux](https://docs.brew.sh/Homebrew-on-Linux).
+**Note**: The script creates symbolic links for tools with different names on Debian:
+- `batcat` → `~/.local/bin/bat`
+- `fdfind` → `~/.local/bin/fd`
+
+Some tools are installed from official sources when not available in apt repositories.
 
 ### Updating existing dotfiles
 
@@ -227,9 +239,84 @@ chezmoi update
 ├── dot_zshrc.tmpl                          # Zsh configuration (Linux)
 ├── empty_dot_hushlogin                     # Suppress login message
 ├── run_onchange_before_install_mac.sh      # macOS tool installation script
-├── run_onchange_after_configure_mac.sh.tmpl # Fish plugin setup script
+├── run_onchange_after_configure_mac.sh.tmpl # Fish plugin setup script (macOS)
 ├── run_onchange_before_install_debian.sh   # Debian/Ubuntu setup script
+├── run_onchange_after_configure_debian.sh.tmpl # Fish plugin setup script (Debian/Ubuntu)
+├── test-scripts.sh                         # Test automation script
+├── test-debian.Dockerfile                  # Debian Bookworm test container
+├── test-ubuntu.Dockerfile                  # Ubuntu 24.04 test container
 └── README.md                               # This file
+```
+
+## Testing
+
+The repository includes automated tests for the Debian/Ubuntu installation scripts using Docker containers.
+
+### Prerequisites for Testing
+
+1. **Docker runtime**: You need either Docker Desktop or a lightweight alternative like Colima
+2. **Colima** (recommended for macOS):
+   ```bash
+   # Install Colima
+   brew install colima
+
+   # Start Colima
+   colima start
+   ```
+
+3. Alternatively, use Docker Desktop from [docker.com](https://www.docker.com/products/docker-desktop/)
+
+### Running Tests
+
+The test suite validates that all tools install correctly on both Debian Bookworm and Ubuntu 24.04:
+
+```bash
+# Navigate to the repository
+cd ~/.local/share/chezmoi
+
+# Run the complete test suite
+./test-scripts.sh
+```
+
+The test script will:
+1. ✅ Perform syntax validation on all shell scripts
+2. ✅ Build Docker containers for Debian Bookworm and Ubuntu 24.04
+3. ✅ Run the installation scripts in isolated environments
+4. ✅ Verify all tools are installed and functional
+
+### Manual Testing
+
+To manually test in an interactive container:
+
+```bash
+# Build and enter a Debian test container
+docker build -f test-debian.Dockerfile -t chezmoi-test-debian .
+docker run -it chezmoi-test-debian /bin/bash
+
+# Or for Ubuntu
+docker build -f test-ubuntu.Dockerfile -t chezmoi-test-ubuntu .
+docker run -it chezmoi-test-ubuntu /bin/bash
+
+# Inside the container, verify installations:
+fish --version
+zsh --version
+bat --version
+eza --version
+lazygit --version
+# etc.
+```
+
+### Cleaning Up Test Environment
+
+After testing, clean up Docker resources:
+
+```bash
+# Remove test containers
+docker rmi chezmoi-test-debian chezmoi-test-ubuntu
+
+# Stop and remove Colima (if used)
+colima stop
+colima delete
 ```
 
 ## Customization

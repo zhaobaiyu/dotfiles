@@ -1,0 +1,30 @@
+#!/bin/bash
+set -euo pipefail
+
+# Exit if not Debian-like Linux (matching .chezmoiignore logic)
+[[ "$(uname)" != "Linux" ]] && exit 0
+[ -f /etc/os-release ] && . /etc/os-release || exit 0
+[[ "$ID" =~ ^(debian|ubuntu)$ || "${ID_LIKE:-}" =~ debian|ubuntu ]] || exit 0
+
+# -----------------------------------------------------------------------------
+# Hash Trigger
+# fish_plugins hash: {{ include "dot_config/private_fish/fish_plugins" | sha256sum }}
+# -----------------------------------------------------------------------------
+
+echo "🐟 Configuring Fish plugins..."
+
+if ! command -v fish &> /dev/null; then
+    echo "Error: Fish shell is not installed. Skipping plugin configuration."
+    exit 0
+fi
+
+if ! fish -c "functions -q fisher" &> /dev/null; then
+    echo "Fisher not found. Installing..."
+    curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | \
+    fish -c "source && fisher install jorgebucaran/fisher"
+fi
+
+echo "Running fisher update..."
+fish -c "fisher update"
+
+echo "✅ Fish configuration complete."
