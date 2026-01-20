@@ -14,3 +14,8 @@ run_onchange_before_install_debian.sh
 .config/fish/fish_variables
 .config/fish/fish_history
 .config/fish/generated_completions/
+
+README.md
+test-debian.Dockerfile
+test-ubuntu.Dockerfile
+test-scripts.sh
