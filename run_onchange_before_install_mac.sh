@@ -63,3 +63,11 @@ if [ ! -d "$GLOBAL_PYTHON_DIR" ]; then
 else
   echo "✅ Global python is already installed."
 fi
+
+# Install Claude Code
+if ! command -v claude &> /dev/null; then
+  echo "Installing Claude Code..."
+  curl -fsSL https://claude.ai/install.sh | bash
+else
+  echo "✅ Claude Code is already installed."
+fi

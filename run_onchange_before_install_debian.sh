@@ -204,6 +204,14 @@ else
   fi
 fi
 
+# Install Claude Code
+if ! command -v claude &> /dev/null; then
+  echo "Installing Claude Code..."
+  curl -fsSL https://claude.ai/install.sh | bash
+else
+  echo "✅ Claude Code is already installed."
+fi
+
 # Ensure ~/.local/bin is in PATH
 if ! echo "$PATH" | grep -q "$HOME/.local/bin"; then
   echo ""
