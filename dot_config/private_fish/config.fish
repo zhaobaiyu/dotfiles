@@ -5,17 +5,14 @@ if status is-interactive
     set -g fish_greeting
     # set -g fish_term24bit 1
 
-    if type -q brew
-        eval (brew shellenv)
+    if test -x /opt/homebrew/bin/brew
+        eval (/opt/homebrew/bin/brew shellenv)
     end
 
     # Initialize tools
     starship init fish | source
     zoxide init fish | source
     direnv hook fish | source
-
-    # Theme
-    fish_config theme choose "Catppuccin Mocha" --color-theme=dark 
 
     # alias vim="nvim"
     # fish_vi_key_bindings

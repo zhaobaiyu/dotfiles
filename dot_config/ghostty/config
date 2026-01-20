@@ -67,3 +67,6 @@ window-padding-y = 20
 # --- Integration ---
 shell-integration = fish
 macos-option-as-alt = true
+
+# Refer to https://ghostty.org/docs/help/terminfo
+shell-integration-features = ssh-terminfo
