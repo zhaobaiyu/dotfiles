@@ -17,8 +17,6 @@ echo "Installing tools with homebrew..."
 
 # Install tools
 brew bundle --file=/dev/stdin <<EOF
-cask "ghostty"
-cask "font-jetbrains-mono-nerd-font"
 brew "fish"
 brew "fzf"
 brew "zoxide"
@@ -31,6 +29,10 @@ brew "zellij"
 brew "direnv"
 brew "lazygit"
 brew "uv"
+brew "gh"
+cask "ghostty"
+cask "font-jetbrains-mono-nerd-font"
+cask "font-lxgw-wenkai"
 EOF
 
 echo "Brew installation complete."
