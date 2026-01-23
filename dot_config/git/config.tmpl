@@ -1,0 +1,51 @@
+[user]
+    name = "Baiyu Zhao"
+    {{- if eq .machine_type "work" }}
+    email = "baiyuzha@amazon.com"
+    {{- else if eq .machine_type "personal" }}
+    email = "dev@baiyu.me"
+    signingkey = ~/.ssh/id_ed25519_github_zhaobaiyu.pub
+    {{- end }}
+
+[gpg]
+    format = ssh
+
+[commit]
+    gpgsign = true
+
+[core]
+    excludesfile = ~/.config/git/ignore
+    attributesfile = ~/.config/git/attributes
+    editor = code --wait
+    pager = delta
+
+[init]
+    defaultBranch = main
+
+[pull]
+    rebase = true
+
+[push]
+    autoSetupRemote = true
+    default = simple
+
+[fetch]
+    prune = true
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true
+    line-numbers = true
+    side-by-side = true
+    syntax-theme = Dracula
+
+[merge]
+    conflictstyle = diff3
+
+[diff]
+    colorMoved = default
+
+[gpg "ssh"]
+    allowedSignersFile = ~/.config/git/allowed_signers

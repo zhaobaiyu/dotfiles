@@ -1,0 +1,22 @@
+encryption = "age"
+
+[age]
+    identity = "{{ .chezmoi.homeDir }}/.config/chezmoi/key.txt"
+    recipient = "age1y2kv2cmtkh9q4qk3jkcvmzs02zyk68yn7nvph5z4lk4u3dktqgkqcqna0u"
+
+{{- if eq .chezmoi.os "darwin" }}
+[diff]
+    command = "delta"
+    pager = "delta"
+
+[edit]
+    command = "code"
+    args = ["--wait"]
+
+[merge]
+    command = "code"
+    args = ["--wait", "--diff", "{{ "{{" }} .Destination {{ "}}" }}", "{{ "{{" }} .Source {{ "}}" }}"]
+{{- end }}
+
+[data]
+    machine_type = "{{ promptString "machine_type (server/personal/work)" "server" }}"
