@@ -49,13 +49,13 @@
 # resize-overlay-duration = 4s 200ms
 
 # --- Appearance ---
-theme = Catppuccin Mocha 
+theme = Catppuccin Mocha
 background-opacity = 0.95
 background-blur-radius = 20
 
 # --- Font ---
 # font-family = JetBrainsMono Nerd Font
-font-size = 14
+font-size = 18
 font-feature = calt
 font-feature = liga
 
