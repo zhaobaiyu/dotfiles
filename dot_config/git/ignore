@@ -6,18 +6,30 @@
 ehthumbs.db
 Thumbs.db
 
+# --- General ---
+build
+
 # --- Editors & IDEs ---
 .idea/
 .vscode/
 *.swp
 *.swo
 *~
+*.iml
 
 # --- Python ---
 __pycache__/
 *.py[cod]
 .venv
+.venv/
 env/
 venv/
 
-**/.claude/settings.local.json
+# --- Java ---
+annotation-generated-*
+.gradle/
+buildSrc/.gradle/
+.classpath
+
+# --- Node ---
+node_modules/
