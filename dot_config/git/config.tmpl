@@ -2,17 +2,12 @@
     name = "Baiyu Zhao"
     {{- if eq .machine_type "work" }}
     email = "baiyuzha@amazon.com"
-    signingkey = ~/.ssh/id_ed25519_github_zhaobaiyu.pub
     {{- else if eq .machine_type "personal" }}
     email = "dev@baiyu.me"
-    signingkey = ~/.ssh/id_ed25519_github_zhaobaiyu.pub
     {{- end }}
 
 [gpg]
     format = ssh
-
-[commit]
-    gpgsign = true
 
 [core]
     excludesfile = ~/.config/git/ignore
@@ -50,3 +45,17 @@
 
 [gpg "ssh"]
     allowedSignersFile = ~/.config/git/allowed_signers
+
+# Only enable signing for GitHub repositories
+{{- if or (eq .machine_type "work") (eq .machine_type "personal") }}
+[includeIf "hasconfig:remote.*.url:git@github.com:*/**"]
+    [user]
+        signingkey = ~/.ssh/id_ed25519_github_zhaobaiyu.pub
+    [commit]
+        gpgsign = true
+[includeIf "hasconfig:remote.*.url:https://github.com/*/**"]
+    [user]
+        signingkey = ~/.ssh/id_ed25519_github_zhaobaiyu.pub
+    [commit]
+        gpgsign = true
+{{- end }}
