@@ -1,0 +1,6 @@
+{{- $secrets := includeTemplate "secrets.yaml" . | fromYaml -}}
+{{- if eq .machine_type "personal" }}
+# For personal machines
+
+set -x AWS_BEARER_TOKEN_BEDROCK {{ $secrets.aws_bedrock_api_key }}
+{{- end }}
