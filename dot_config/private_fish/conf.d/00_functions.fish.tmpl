@@ -1,0 +1,6 @@
+# Claude Code
+# With Bedrock API
+function claude-bedrock
+    set -x CLAUDE_CODE_USE_BEDROCK 1
+    claude --enable-auto-mode --model "us.anthropic.claude-opus-4-6-v1[1m]" $argv
+end

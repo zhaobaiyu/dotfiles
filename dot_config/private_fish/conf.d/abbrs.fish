@@ -18,7 +18,7 @@ abbr -a cat 'bat'
 abbr -a grep rg
 
 # -----------------------------
-# 2. Git 
+# 2. Git
 # -----------------------------
 abbr -a g 'git'
 abbr -a ga 'git add'
@@ -51,4 +51,4 @@ abbr -a zjdev 'zellij --layout dev'
 # -----------------------------
 # 5. AI coding tools
 # -----------------------------
-abbr -a c "claude"
+abbr -a c "claude-bedrock"

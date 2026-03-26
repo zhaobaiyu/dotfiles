@@ -2,5 +2,13 @@
 {{- if eq .machine_type "personal" }}
 # For personal machines
 
+# Bedrock API Key
 set -x AWS_BEARER_TOKEN_BEDROCK {{ $secrets.aws_bedrock_api_key }}
+
+# Claude Code
+# With Claude subscription
+function claude-login
+    set -e CLAUDE_CODE_USE_BEDROCK
+    claude --enable-auto-mode --model opusplan $argv
+end
 {{- end }}

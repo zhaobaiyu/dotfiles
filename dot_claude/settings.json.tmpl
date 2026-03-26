@@ -1,7 +1,6 @@
 {{- $secrets := includeTemplate "secrets.yaml" . | fromYaml -}}
 {
   "env": {
-    "CLAUDE_CODE_USE_BEDROCK": "1",
 {{- if eq .machine_type "work" }}
     "AWS_PROFILE": "aki-shared-access",
     "CLAUDE_CODE_ENABLE_TELEMETRY": "0",
@@ -9,12 +8,8 @@
     "AWS_BEARER_TOKEN_BEDROCK": "{{ $secrets.aws_bedrock_api_key }}",
 {{- end }}
     "AWS_REGION": "us-west-2",
-    "ANTHROPIC_DEFAULT_SONNET_MODEL": "global.anthropic.claude-sonnet-4-5-20250929-v1:0",
-    "ANTHROPIC_DEFAULT_OPUS_MODEL": "us.anthropic.claude-opus-4-6-v1",
-    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "global.anthropic.claude-haiku-4-5-20251001-v1:0",
     "ENABLE_LSP_TOOL": "1"
   },
-  "model": "us.anthropic.claude-opus-4-6-v1",
   "enabledPlugins": {
     "document-skills@anthropic-agent-skills": true,
     "example-skills@anthropic-agent-skills": true,
