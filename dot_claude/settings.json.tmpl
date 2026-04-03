@@ -4,8 +4,6 @@
 {{- if eq .machine_type "work" }}
     "AWS_PROFILE": "aki-shared-access",
     "CLAUDE_CODE_ENABLE_TELEMETRY": "0",
-{{- else }}
-    "AWS_BEARER_TOKEN_BEDROCK": "{{ $secrets.aws_bedrock_api_key }}",
 {{- end }}
     "AWS_REGION": "us-west-2",
     "ENABLE_LSP_TOOL": "1"

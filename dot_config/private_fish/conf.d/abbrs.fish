@@ -47,8 +47,3 @@ abbr -a cmg 'chezmoi git'
 abbr -a zj 'zellij'
 abbr -a zja 'zellij attach -c main'
 abbr -a zjdev 'zellij --layout dev'
-
-# -----------------------------
-# 5. AI coding tools
-# -----------------------------
-abbr -a c "claude-bedrock"

@@ -119,6 +119,13 @@ export PATH="$HOME/.global-python/bin:$PATH"
 export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
 {{- end }}
 
+# bun completions
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
 {{- if eq .machine_type "work" }}
 # For Amazon machines
 

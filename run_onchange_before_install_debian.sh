@@ -211,6 +211,14 @@ else
   echo "✅ Claude Code is already installed."
 fi
 
+# Install Bun
+if ! command -v bun &> /dev/null; then
+  echo "Installing Bun..."
+  curl -fsSL https://bun.sh/install | bash
+else
+  echo "✅ Bun is already installed."
+fi
+
 # Ensure ~/.local/bin is in PATH
 if ! echo "$PATH" | grep -q "$HOME/.local/bin"; then
   echo ""
