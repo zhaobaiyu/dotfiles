@@ -1,0 +1,4 @@
+[user]
+    signingkey = ~/.ssh/id_ed25519_github_zhaobaiyu.pub
+[commit]
+    gpgsign = true

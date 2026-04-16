@@ -1,11 +1,19 @@
 {{- $secrets := includeTemplate "secrets.yaml" . | fromYaml -}}
 {
+  "model": "us.anthropic.claude-opus-4-6-v1[1m]",
   "env": {
 {{- if eq .machine_type "work" }}
     "AWS_PROFILE": "aki-shared-access",
-    "CLAUDE_CODE_ENABLE_TELEMETRY": "0",
-{{- end }}
     "AWS_REGION": "us-west-2",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "us.anthropic.claude-opus-4-6-v1[1m]",
+    "CLAUDE_CODE_ENABLE_TELEMETRY": "0",
+    "CLAUDE_CODE_USE_BEDROCK": "1",
+    "DISABLE_TELEMETRY": "1",
+    "DISABLE_ERROR_REPORTING": "1",
+    "DISABLE_BUG_COMMAND": "1",
+    "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1",
+    "CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY": "1",
+{{- end }}
     "ENABLE_LSP_TOOL": "1"
   },
   "enabledPlugins": {
@@ -21,5 +29,137 @@
         "repo": "kepano/obsidian-skills"
       }
     }
-  }
+  },
+{{- if eq .machine_type "work" }}
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/baiyuzha/.claude/hooks/session-context-loader.sh",
+            "timeout": 10,
+            "statusMessage": "Loading workspace context..."
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/baiyuzha/.claude/hooks/block-destructive-commands.sh",
+            "statusMessage": "Checking command safety..."
+          },
+          {
+            "type": "command",
+            "command": "/Users/baiyuzha/.claude/hooks/conventional-commit-check.sh",
+            "statusMessage": "Validating commit message..."
+          }
+        ]
+      },
+      {
+        "matcher": "Read",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/baiyuzha/.claude/hooks/block-sensitive-reads.sh",
+            "statusMessage": "Checking file access..."
+          }
+        ]
+      },
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/baiyuzha/.claude/hooks/warn-prod-config.sh",
+            "statusMessage": "Checking for production config..."
+          },
+          {
+            "type": "command",
+            "command": "/Users/baiyuzha/.claude/hooks/pre-write-security-scan.sh",
+            "statusMessage": "Running pre-write security scan..."
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/baiyuzha/.claude/hooks/no-secrets-in-code.sh",
+            "statusMessage": "Scanning for hardcoded secrets..."
+          },
+          {
+            "type": "command",
+            "command": "/Users/baiyuzha/.claude/hooks/lint-after-edit.sh",
+            "timeout": 30,
+            "statusMessage": "Running lint check..."
+          },
+          {
+            "type": "command",
+            "command": "/Users/baiyuzha/.claude/hooks/brazil-build-after-edit.sh",
+            "statusMessage": "Checking Brazil package context..."
+          }
+        ]
+      },
+      {
+        "matcher": ".*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/baiyuzha/.claude/hooks/log-tool-usage.sh",
+            "async": true,
+            "timeout": 5
+          },
+          {
+            "type": "command",
+            "command": "/Users/baiyuzha/.claude/hooks/permission-audit-log.sh",
+            "async": true,
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/baiyuzha/.claude/hooks/verify-build-before-stop.sh",
+            "statusMessage": "Verifying build was run..."
+          }
+        ]
+      }
+    ],
+    "ConfigChange": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/baiyuzha/.claude/hooks/config-change-alert.sh",
+            "statusMessage": "Checking config change..."
+          }
+        ]
+      }
+    ],
+    "InstructionsLoaded": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/baiyuzha/.claude/hooks/instructions-integrity-check.sh",
+            "statusMessage": "Verifying instructions integrity..."
+          }
+        ]
+      }
+    ]
+  },
+{{- end }}
+  "includeCoAuthoredBy": false
 }
