@@ -1,6 +1,5 @@
 {{- $secrets := includeTemplate "secrets.yaml" . | fromYaml -}}
 {
-  
 {{- if eq .machine_type "work" }}
   "model": "us.anthropic.claude-opus-4-7[1m]",
 {{- else if eq .machine_type "personal" }}
@@ -166,5 +165,7 @@
     ]
   },
 {{- end }}
-  "includeCoAuthoredBy": false
+  "includeCoAuthoredBy": false,
+  "language": "english",
+  "cleanupPeriodDays": 365
 }
