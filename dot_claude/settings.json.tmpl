@@ -8,6 +8,7 @@
 {{- end }}
     "document-skills@anthropic-agent-skills": true,
     "example-skills@anthropic-agent-skills": true,
+    "local-JmaxAICapabilities-all@aim": true,
     "obsidian@obsidian-skills": true,
     "typescript-lsp@claude-plugins-official": true
   },
@@ -17,7 +18,8 @@
     "AWS_PROFILE": "claude-code-DO-NOT-DELETE",
     "AWS_REGION": "us-west-2",
 {{- end }}
-    "ENABLE_LSP_TOOL": "1"
+    "ENABLE_LSP_TOOL": "1",
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
   },
   "extraKnownMarketplaces": {
 {{- if eq .machine_type "work" }}
@@ -36,6 +38,8 @@
     }
   },
   "language": "english",
+  "tui": "fullscreen",
+  "skipDangerousModePermissionPrompt": true,
 {{- if eq .machine_type "work" }}
   "model": "us.anthropic.claude-opus-4-7[1m]"
 {{- else if eq .machine_type "personal" }}

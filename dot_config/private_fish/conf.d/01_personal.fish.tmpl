@@ -7,7 +7,7 @@ set -x CLAUDE_CODE_OAUTH_TOKEN {{ $secrets.claude_code_oauth_token }}
 
 # Claude Code
 # With Claude subscription
-abbr -a c "claude --enable-auto-mode --model opusplan"
+abbr -a c "claude --dangerously-skip-permissions --model opusplan"
 
 # Codex
 set -x AZURE_OPENAI_CODEX_API_KEY {{ $secrets.azure_openai_codex_api_key }}
